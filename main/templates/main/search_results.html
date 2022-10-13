@@ -1,0 +1,44 @@
+{% extends 'landing/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12">
+            <h5>Search Results</h5>
+        </div>
+    </div>
+
+
+    {% for profile in profiles %}
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-5 col-sm-12 border-bottom">
+                
+                <div style="float: left;">
+                    <img src="{{ profile.picture.url }}" alt="NO DP" class="rounded-circle mt-3 border border-primary border-3" height="100" width="100" />
+                    <p>{{ profile.name }}</p>
+                </div>
+                
+                
+                <div class="position-relative" style="float:right">
+                    <a href="{% url 'profile' profile.pk %}" style="text-decoration: none;">
+                        @{{profile.user}}
+                    </a>
+                    <p>{{ profile.followers.all.count }} Followers</p>
+                </div>
+
+            </div>
+        </div>
+
+        {% empty %}
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8 col-sm-12 mb-3 border-bottom position-relative">
+                <h5>No profiles to show!</h5>
+            </div>
+        </div>
+
+    {% endfor %}
+
+</div>
+{% endblock %}

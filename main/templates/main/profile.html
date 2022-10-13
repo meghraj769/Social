@@ -1,0 +1,107 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row justify-content-center mt-5 pb-5">
+        <div class="card shadow rounded col-md-8 col-sm-12 profile-detail d-flex flex-row justify-content-between">
+
+
+
+            <div class="p-2">
+                <img src="{{ profile.picture.url }}" alt="NO DP" class="dp" height="100" width="100" />
+            
+
+
+                {% if profile.name %}
+    
+                    <div class="name-container">
+                        <div class="profile-full-name">{{ profile.name }}</div>
+                        <a href="{% url 'profile' profile.pk %}"><div class="profile-user-name strokeme">@{{profile.user}}</div></a>
+
+                    </div>
+            
+                {% endif %}
+            </div>
+
+
+
+            <div>
+
+                {% if profile.bio %}
+                    <!-- <blockquote class="blockquote bio-style"> -->
+                        <p class="bio-style">" {{ profile.bio }} "</p>
+                    <!-- </blockquote> -->
+                {% endif %}
+
+            </div>
+
+
+                
+
+
+            
+            <div class="p-2">                  
+
+
+                {% if request.user == profile.user %}
+                    <div></div>
+                {% else %}
+                    {% if following %}
+                        <form method="POST" action="{% url 'unfollow' profile.pk %}">
+                            {% csrf_token %}
+                            <button class="button-36 px-2" type="submit">Following</button>
+                        </form>
+                    {% else %}
+                        <form method="POST" action="{% url 'follow' profile.pk %}">
+                            {% csrf_token %} 
+                            <button class="button-36 px-2" type="submit">Follow</button>
+                        </form>
+                    {% endif %}
+                {% endif %}
+
+                {% if request.user == profile.user %}
+                    <a class="button-42 px-2" href="{% url 'profile_edit' user.pk %}" type="button">Edit Profile!</a>                
+                {% endif %}
+
+                <div class="text-center mydiv rounded"> {{num_followers}} Followers </div>
+
+            </div>
+
+
+
+                         
+        </div>
+
+    </div>
+
+        
+        <h2 class="text-center">POSTS</h2>
+        
+        <div class="list-wrapper">
+            {% for post in posts %}
+            <div class="row card shadow mb-5 pop-up">
+                <div class="col-md-8 col-sm-12 mb-3position-relative">
+                    <p><strong>{{post.author}}</strong> <i>{{post.created_on}}</i> </p>
+                    <p>{{ post.body }}</p>
+                    <a class="stretched-link" href="{% url 'post_detail' pk=post.pk %}"></a>
+                </div>
+            </div>
+            
+            {% empty %}
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-8 col-sm-12 mb-3 border-bottom position-relative">
+                    <h5>No posts to show!</h5>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row mb-5 mt-3">
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'post_list' %}" class="text-primary">Back to Feed!</a>
+            </div>
+        </div>
+
+</div>
+{% endblock %}

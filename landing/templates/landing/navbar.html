@@ -1,0 +1,43 @@
+<div class="poppins-font">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-style py-1">
+        <div class="container-fluid ">
+          <a class="navbar" 
+          {% if user.is_authenticated %}
+          href="{% url 'post_list' %}"
+          {% else %}
+          href="{% url 'index' %}"
+          {% endif %}
+          ><div class="rounded card shadow brand"><i class="fas fa-comment px-1 "></i> Social</div></a>
+          <button class=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="navbar-style p-3" href="{% url 'post_list' %}">Posts</a>
+                </li>
+            </ul> -->
+            <form class="d-flex mx-auto me-5" method="GET" action="{% url 'search' %}">
+                <div class="input-group">
+                    <input name="query" value="{{ request.GET.query }}" type="text" class="search-input" placeholder="    Find friends..." aria-label="Username" aria-describedby="basic-addon1">
+                    <button type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+            
+            <div class=" me-auto"></div>
+
+            {% if user.is_authenticated %}    
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light text-sm" data-bs-toggle="dropdown" role="button" aria-expanded="false">{{request.user}}</a>
+                    <!-- <span class="user-name"><a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" role="button" aria-expanded="false">{{request.user}}</a></span> -->
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item ddown-font" href="{% url 'profile' request.user.profile.pk %}">Profile</a></li>
+                        <li><a class="dropdown-item ddown-font" href="{% url 'account_logout' %}">Logout</a></li>
+                    </ul>
+                </div>
+            {% endif %}
+    
+          </div>
+        </div>
+    </nav>
+</div>

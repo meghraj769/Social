@@ -1,0 +1,85 @@
+{% extends 'landing/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row mt-5 mb-5 card shadow pop-up">
+
+        <div class="name-container">
+            <div class="profile-full-name m-5">Post by : {{ post.author.profile.name}}</div>
+            <a href="{% url 'profile' post.author.pk %}"><div class="profile-user-name strokeme">@{{post.author}}</div></a>
+        </div>
+
+        <div class="post-body mt-5 col-md-5 col-sm-12">
+            <!-- <p><strong>{{post.author}}</strong> <i>{{post.created_on}}</i></p> -->
+            <p>{{ post.body }}</p>
+        </div>
+
+        <p class="user-name mt-4 fs fs-5">{{post.returnlikes}}</p>
+
+        {% if liking %}
+        <form action="{% url 'unlike' post.pk %}" method="POST">
+            {% csrf_token %}
+            <button class="like-btn"><i class="fa-solid fa-thumbs-up text-primary"></i></button>
+        </form>
+        {% else %}
+        <form action="{% url 'like' post.pk %}" method="POST">
+            {% csrf_token %}
+            <button class="like-btn"><i class="fa-regular fa-thumbs-up"></i></button>
+        </form>
+        {% endif %}
+        
+
+        <div class="col-md-7 col-sm-12">
+            {% if request.user == post.author %}
+                <a href="{% url 'post_edit' post.pk %}" class="button-33 m-5">Edit Post</a>
+                <a href="{% url 'post_delete' post.pk %}" class="button-786 m-5">Delete Post</a>
+            {% endif %}
+        </div>
+    </div>
+        
+    
+    <h1>Comments</h1>
+    
+    
+    {% for comment in comments %}
+    <div class="row mt-4">
+        <div class="col-md-5 col-sm-12 border-bottom position-relative">
+            <p>
+                <strong>{{comment.author}}</strong> <i>{{comment.created_on}}</i>
+                {% if request.user == comment.author or request.user == post.author %}
+                <a class="m-5" href="{% url 'comment_delete' post.pk comment.pk %}"><i style="color: red;" class="fa-sharp fa-solid fa-trash"></i></a>
+                {% endif %}
+            </p>
+            <p>{{ comment.comment }}</p>
+        </div>
+    </div>
+    
+    {% empty %}
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8 col-sm-12 mb-3 font-italic">
+            <p class="fst-italic">No comments!</p>
+            <!-- <h5><i>No comments!</i></h5> -->
+        </div>
+    </div>
+    
+    {% endfor %}
+    
+    
+    <div class="row justify-content-center mt-5 pt-5 border-dark border-top">
+        <div class="col-md-5 col-sm-12">
+            <h5>Add a comment</h5>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-grid gap-2 mt-4">
+                    <button class="btn btn-sm btn-success" type="submit">Comment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <a href="{% url 'post_list' %}" class="text-primary">Back to Feed!</a>
+</div>
+{% endblock %}

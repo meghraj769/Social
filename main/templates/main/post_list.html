@@ -1,0 +1,79 @@
+{% extends 'landing/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+
+
+    <div class="list-wrapper">
+        {% for post in post_list %}
+            <div class="card shadow mb-5 row pop-up">
+                    
+                    <div class="author-time mb-3">
+                        <a href="{% url 'profile' post.author.profile.pk %}" class="text-danger">
+                            @{{post.author}}
+                        </a>
+                        
+                        <span class="create-time">{{post.created_on}}</span>
+                    </div>
+
+
+                    <div class="position-relative">
+                        <p class="post-body">{{ post.body }}</p>
+                        <a class="stretched-link" href="{% url 'post_detail' pk=post.pk %}"></a>
+                    </div>
+                    <!-- <a href="{% url 'like' post.pk %}"><i class="fa-solid fa-heart text-primary"></i></a> -->
+                    
+                    <!-- <div>
+                    </div> -->
+                    
+                    <div>
+                        <p class="user-name">{{post.returnlikes}}</p>
+                        {% if post.does_like %}
+                            <form action="{% url 'unlike' post.pk %}" method="POST">
+                                {% csrf_token %}
+                                <button class="like-btn"><i class="fa-solid fa-thumbs-up text-primary"></i></button>
+                            </form>
+                        {% else %}
+                            <form action="{% url 'like' post.pk %}" method="POST">
+                                {% csrf_token %}
+                                <button class="like-btn"><i class="fa-regular fa-thumbs-up"></i></button>
+                            </form>
+                        {% endif %}
+                    </div>
+
+
+            </div>
+
+            {% empty %}
+            <div class="row card rounded">
+                <div class="col-md-8 col-sm-12 mb-3 border-bottom position-relative">
+                    <h5>No posts to show!</h5>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+    
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-5 col-sm-12">
+            <h5>Add your own Post!</h5>
+        </div>
+    </div>
+
+    <div class="row mb-5 justify-content-center">
+        <div class="col-md-5 col-sm-12">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-grid gap-2 mt-4">
+                    <button class="button-33" type="submit">Post to Feed!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
