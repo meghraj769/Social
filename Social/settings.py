@@ -27,8 +27,8 @@ SECRET_KEY = 'django-insecure-_uylqp7$=#(a0!^)yee!gm$9o*=2n%-j2ium9)f0#+i&2%knym
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
 DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = ['127.0.0.1','meghsocial.herokuapp.com']
 ALLOWED_HOSTS = ['*']
@@ -45,7 +45,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
+    # 'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
