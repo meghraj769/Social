@@ -164,3 +164,7 @@ LOGIN_REDIRECT_URL = 'post_list'
 ACCOUNT_EMAIL_REQUIRED = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
