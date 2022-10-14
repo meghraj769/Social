@@ -52,8 +52,8 @@ class UserProfile(models.Model):
     picture = models.ImageField(blank=True, null=True, default='uploads/profile_pictures/default.jpg', upload_to='uploads/profile_pictures')
     followers = models.ManyToManyField(User, blank=True, related_name='followers')
 
-    def __str__(self) -> str:
-        return self.user.profile.name
+    # def __str__(self) -> str:
+    #     return self.user.profile.name
 
 
 
