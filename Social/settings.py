@@ -26,6 +26,8 @@ TEMPLATE_DIR = BASE_DIR.joinpath('templates')
 SECRET_KEY = 'django-insecure-_uylqp7$=#(a0!^)yee!gm$9o*=2n%-j2ium9)f0#+i&2%knym'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
+
 DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','meghsocial.herokuapp.com/']
@@ -139,11 +141,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # STATIC_ROOT  = BASE_DIR.joinpath('static')
-# STATICFILES_DIRS = [
-#     BASE_DIR.joinpath('static'),
-#     ]
 
-STATIC_ROOT = BASE_DIR.joinpath('static-cache')
+STATICFILES_DIRS = [
+    BASE_DIR.joinpath('static'),
+    ]
+
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
@@ -166,5 +169,5 @@ ACCOUNT_EMAIL_REQUIRED = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Configure Django App for Heroku.
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
