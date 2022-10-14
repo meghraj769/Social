@@ -26,8 +26,8 @@ TEMPLATE_DIR = BASE_DIR.joinpath('templates')
 SECRET_KEY = 'django-insecure-_uylqp7$=#(a0!^)yee!gm$9o*=2n%-j2ium9)f0#+i&2%knym'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 
+DEBUG = True
 DEBUG = False
 
 # ALLOWED_HOSTS = ['127.0.0.1','meghsocial.herokuapp.com']
@@ -45,6 +45,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -152,7 +153,7 @@ STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR.joinpath('media')
 
 # Default primary key field type
