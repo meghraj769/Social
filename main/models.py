@@ -48,12 +48,12 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, primary_key = True, on_delete=models.CASCADE, verbose_name='user', related_name='profile')
     name = models.CharField(max_length=30, blank=True, null=True)
     bio = models.TextField(max_length=300, null=True, blank=True)
-    birth_date = models.DateField()
-    picture = models.ImageField(upload_to='uploads/profile_pictures')
+    birth_date = models.DateField(null=True)
+    picture = models.ImageField(blank=True, null=True, default='uploads/profile_pictures/default.jpg', upload_to='uploads/profile_pictures')
     followers = models.ManyToManyField(User, blank=True, related_name='followers')
 
     def __str__(self) -> str:
-        return self.user.username + "-" + self.name
+        return self.user.profile.name
 
 
 
@@ -61,10 +61,12 @@ class UserProfile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
+        print('üser profile created')
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+    print('üser profile created')
 
 
 

@@ -21,7 +21,8 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = '__all__'
+        # fields = '__all__'
+        exclude = ['followers']
         
 class CommentForm(forms.ModelForm):
 

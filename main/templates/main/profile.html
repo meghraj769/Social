@@ -4,46 +4,31 @@
 <div class="container">
 
     <div class="row justify-content-center mt-5 pb-5">
-        <div class="card shadow rounded col-md-8 col-sm-12 profile-detail d-flex flex-row justify-content-between">
-
-
+        <div class="card shadow rounded col-md-8 col-sm-12 profile-detail d-flex flex-row">
 
             <div class="p-2">
-                <img src="{{ profile.picture.url }}" alt="NO DP" class="dp" height="100" width="100" />
-            
-
-
-                {% if profile.name %}
-    
-                    <div class="name-container">
-                        <div class="profile-full-name">{{ profile.name }}</div>
-                        <a href="{% url 'profile' profile.pk %}"><div class="profile-user-name strokeme">@{{profile.user}}</div></a>
-
-                    </div>
-            
-                {% endif %}
+                <div>
+                    <img src="{{ profile.picture.url }}" alt="NO DP" class="dp" height="100" width="100" />
+                    {% if profile.name %}    
+                        <div class="name-container">
+                            <div class="profile-full-name">{{ profile.name }}</div>
+                            <a href="{% url 'profile' profile.pk %}"><div class="profile-user-name strokeme">@{{profile.user}}</div></a>
+                        </div>            
+                    {% endif %}
+                </div>
             </div>
-
-
 
             <div>
-
-                {% if profile.bio %}
-                    <!-- <blockquote class="blockquote bio-style"> -->
+                <div class="text-center">
+                    {% if profile.bio %}
                         <p class="bio-style">" {{ profile.bio }} "</p>
-                    <!-- </blockquote> -->
-                {% endif %}
-
+                    {% else %}
+                        <p class="bio-style">" NO BIO PROVIDED !!!!!!!!!"</p>
+                    {% endif %}
+                </div>
             </div>
 
-
-                
-
-
-            
-            <div class="p-2">                  
-
-
+            <div class="p-2 text-end newborder">                  
                 {% if request.user == profile.user %}
                     <div></div>
                 {% else %}
@@ -65,16 +50,9 @@
                 {% endif %}
 
                 <div class="text-center mydiv rounded"> {{num_followers}} Followers </div>
-
-            </div>
-
-
-
-                         
+            </div>                         
         </div>
-
     </div>
-
         
         <h2 class="text-center">POSTS</h2>
         
@@ -86,8 +64,7 @@
                     <p>{{ post.body }}</p>
                     <a class="stretched-link" href="{% url 'post_detail' pk=post.pk %}"></a>
                 </div>
-            </div>
-            
+            </div>            
             {% empty %}
             <div class="row justify-content-center mt-4">
                 <div class="col-md-8 col-sm-12 mb-3 border-bottom position-relative">
@@ -102,6 +79,5 @@
                 <a href="{% url 'post_list' %}" class="text-primary">Back to Feed!</a>
             </div>
         </div>
-
 </div>
 {% endblock %}

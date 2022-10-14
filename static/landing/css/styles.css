@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Ceviche+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap');
@@ -14,9 +15,8 @@ body {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
-
-
 
 *:focus {
   outline: none;
@@ -32,7 +32,7 @@ html {
 
 a, a:hover, a:focus, a:active {
   text-decoration: none;
-  color: white;
+  color: black;
 }
 
 .author-time{
@@ -47,10 +47,16 @@ button{
     background-color: white;
 }
 
+.newborder{
+  text-align: end;
+  vertical-align: middle;
+}
+
 
 .bio-style{
   font-family: 'Libre Baskerville';
-  /* margin-top: 25%; */
+  margin-top: 25%;
+  padding-right: 20%;
   font-weight: bold;
 }
 
@@ -91,18 +97,39 @@ button{
 }
 
 
+.gradbg{
+  background: hsla(5, 93%, 28%, 1);
+  background: linear-gradient(90deg, hsla(5, 93%, 28%, 1) 0%, hsla(34, 10%, 13%, 1) 100%);
+  background: -moz-linear-gradient(90deg, hsla(5, 93%, 28%, 1) 0%, hsla(34, 10%, 13%, 1) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(5, 93%, 28%, 1) 0%, hsla(34, 10%, 13%, 1) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8C1105", endColorstr="#25221E", GradientType=1 );
+  padding-bottom: 5%;
+}
 
 .heading-font{
-  font-family: 'Kalam', cursive;
+  font-family: 'Ceviche One', cursive;
   font-size: 4em;
   margin-top: 2.5%;
   text-align: center;
   color: #230007;
 }
 
+.lightgrad{
+  background: hsla(176, 61%, 87%, 1);
+
+  background: linear-gradient(90deg, hsla(176, 61%, 87%, 1) 0%, hsla(150, 54%, 86%, 1) 50%, hsla(301, 68%, 84%, 1) 100%);
+
+  background: -moz-linear-gradient(90deg, hsla(176, 61%, 87%, 1) 0%, hsla(150, 54%, 86%, 1) 50%, hsla(301, 68%, 84%, 1) 100%);
+
+  background: -webkit-linear-gradient(90deg, hsla(176, 61%, 87%, 1) 0%, hsla(150, 54%, 86%, 1) 50%, hsla(301, 68%, 84%, 1) 100%);
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAF2EF", endColorstr="#C9EFDC", GradientType=1 );
+}
+
 .list-wrapper{
+  transform: scale(0.85);
   border-left: 2px solid brown;
-  margin-top: 5%;
+  /* margin-top: 5%; */
   font-family: 'Noto Sans Display', sans-serif;
   padding: 0;
 }
@@ -128,13 +155,20 @@ button{
     font-size: 120%;
 }
 
+.pop-up-no-hover{
+  padding: 5%;
+  background: #70e1f5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, white, #D2FDFF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, white, #D2FDFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* opacity: 80%; */
+}
+
 .pop-up{
   /* transform: scale(0.98); */
   padding: 1%;
   background: #70e1f5;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, white, #D2FDFF);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, white, #D2FDFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 }
 
 .pop-up:hover{
@@ -183,6 +217,21 @@ button{
 .search-input{
     border: 1px solid black;
     border-radius: 15px;
+}
+
+.search-row{
+  background: hsla(324, 91%, 46%, 1);
+  background: linear-gradient(90deg, hsla(324, 91%, 46%, 1) 0%, hsla(18, 100%, 49%, 1) 100%);
+  background: -moz-linear-gradient(90deg, hsla(324, 91%, 46%, 1) 0%, hsla(18, 100%, 49%, 1) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(324, 91%, 46%, 1) 0%, hsla(18, 100%, 49%, 1) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E20B8C", endColorstr="#F84B00", GradientType=1 );
+  border-radius: 10%;
+  transform: scale(0.8);
+}
+
+.search-row:hover{
+  border: 2px solid black;
+  transform: scale(0.85);
 }
 
 .strokeme {

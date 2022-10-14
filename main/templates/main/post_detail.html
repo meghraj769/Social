@@ -47,7 +47,8 @@
     <div class="row mt-4">
         <div class="col-md-5 col-sm-12 border-bottom position-relative">
             <p>
-                <strong>{{comment.author}}</strong> <i>{{comment.created_on}}</i>
+                <a href="{% url 'profile' comment.author.pk %}" class="text-primary"><strong>{{comment.author}}</strong></a>
+                <i>{{comment.created_on}}</i>
                 {% if request.user == comment.author or request.user == post.author %}
                 <a class="m-5" href="{% url 'comment_delete' post.pk comment.pk %}"><i style="color: red;" class="fa-sharp fa-solid fa-trash"></i></a>
                 {% endif %}
@@ -80,6 +81,6 @@
         </div>
     </div>
     
-    <a href="{% url 'post_list' %}" class="text-primary">Back to Feed!</a>
+    <a href="{% url 'post_list' %}" class="btn btn-outline-dark mb-5 mt-5 ms-auto">Back to Feed!</a>
 </div>
 {% endblock %}
