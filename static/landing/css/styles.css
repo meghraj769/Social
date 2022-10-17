@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ceviche+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
@@ -127,7 +128,7 @@ button{
 }
 
 .list-wrapper{
-  transform: scale(0.85);
+  transform: scale(0.9);
   border-left: 2px solid brown;
   /* margin-top: 5%; */
   font-family: 'Noto Sans Display', sans-serif;
@@ -176,7 +177,8 @@ button{
 }
 
 .post-body{
-  font-family: 'Kalam';
+  /* font-family: 'Kalam'; */
+  font-family: 'Ubuntu', 'Poppins';
   font-size: 1.4em;
 }
 
