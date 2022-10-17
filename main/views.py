@@ -34,7 +34,10 @@ class ProfileView(View):
 
 class PostList(LoginRequiredMixin, View):
 	def get(self, request, *args, **kwargs):
-		posts = Post.objects.all().order_by('-created_on')
+		logged_in_user_id = request.user.id
+		posts = Post.objects.filter(
+			author__profile__followers__in = [logged_in_user_id]
+		).order_by('-created_on')
 		form = PostForm()
 
 		for post in posts:
