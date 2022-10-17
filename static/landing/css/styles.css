@@ -130,7 +130,7 @@ button{
 .list-wrapper{
   transform: scale(0.85);
   border-left: 2px solid brown;
-  /* margin-top: 5%; */
+  margin-top: 5%;
   font-family: 'Noto Sans Display', sans-serif;
   padding: 0;
 }
