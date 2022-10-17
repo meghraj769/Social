@@ -62,7 +62,7 @@
                     <a class="button-42 px-2" href="{% url 'profile_edit' user.pk %}" type="button">Edit Profile!</a>                
                 {% endif %}
 
-                <div class="text-center mydiv rounded"> {{num_followers}} Followers </div>
+                <div class="text-center mydiv rounded"><a href="{% url 'followers' profile.pk %}">{{num_followers}} Followers</a></div>
             </div>                         
         </div>
     </div>
