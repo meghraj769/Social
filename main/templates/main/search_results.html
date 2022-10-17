@@ -18,12 +18,12 @@
                 
                 <div class="text-center">
                     <img src="{{ profile.picture.url }}" alt="NO DP" class="rounded-circle mt-3 border border-dark border-2" height="100" width="100" />
-                    <p class="fs-5 user-name">{{ profile.user }}</p>
+                    <p class="fs-5 user-name">{{ profile.name }}</p>
                 </div>
                 
                 
                 <div class="text-center mb-1 profile-full-name">
-                        @{{profile.name}} - {{ profile.followers.all.count }} Followers
+                        @{{profile.user}} - {{ profile.followers.all.count }} Followers
                 </div>
                     
             </div>

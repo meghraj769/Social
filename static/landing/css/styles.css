@@ -86,10 +86,20 @@ button{
   height: 150px;
   width: 150px;
   border: 2px solid black;
+  border: 2px solid black;
   border-radius: 100%;
   margin-left: 5%;
   margin-top: 5%;
   filter: brightness(1.5);
+}
+
+.dp-mini {
+  border-radius: 100%;
+  border: 1px solid black;
+  filter: brightness(1.2);
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
 }
 
 .ddown-font{

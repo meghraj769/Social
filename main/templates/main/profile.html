@@ -10,10 +10,23 @@
                 <div>
                     <img src="{{ profile.picture.url }}" alt="NO DP" class="dp" height="100" width="100" />
                     {% if profile.name %}    
-                        <div class="name-container">
+                        <!-- <div class="name-container">
                             <div class="profile-full-name">{{ profile.name }}</div>
                             <a href="{% url 'profile' profile.pk %}"><div class="profile-user-name strokeme">@{{profile.user}}</div></a>
-                        </div>            
+                        </div>-->
+
+                        <div class="author-time pt-3 mb-3">
+
+                            <a href="{% url 'profile' profile.pk %}" class="text-danger">
+                            <!-- <img src="{{post.author.profile.picture.url}}" class="dp-mini"> -->
+                                @{{profile.user}}
+                            </a>
+
+                            - {{profile.name}}
+                            
+                            <span class="create-time">{{post.created_on}}</span>
+                        </div>
+
                     {% endif %}
                 </div>
             </div>

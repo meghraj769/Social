@@ -10,7 +10,10 @@
             <div class="card shadow mb-4 row pop-up">
                     
                     <div class="author-time mb-3">
+
                         <a href="{% url 'profile' post.author.profile.pk %}" class="text-danger">
+                        <img src="{{post.author.profile.picture.url}}" class="dp-mini">
+
                             @{{post.author}}
                         </a>
                         
